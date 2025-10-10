@@ -10,7 +10,7 @@
 
 using ScratchConsole.Weeks;
 
-internal class Entry
+internal class Program
 {
     private static void Main(string[] args)
     {
