@@ -14,6 +14,6 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        Week01.Run();
+        Week03.Run();
     }
 }
