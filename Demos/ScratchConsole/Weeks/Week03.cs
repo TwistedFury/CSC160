@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ScratchConsole.Interfaces;
+﻿using ScratchConsole.Interfaces;
 using ScratchConsole.Models;
 
 namespace ScratchConsole.Weeks
@@ -12,7 +7,20 @@ namespace ScratchConsole.Weeks
     {
         public static void Run()
         {
-            DemoInterfaces();
+            DemoStructs();
+        }
+
+        public static void DemoStructs()
+        {
+            FullName myName = new FullName() { FirstName = "Professor", LastName = "Krebs" };
+            FullName cloneName = myName;
+            Console.WriteLine(myName);
+            Console.WriteLine(cloneName);
+            Console.WriteLine();
+
+            cloneName.LastName = "Shull";
+            Console.WriteLine(myName);
+            Console.WriteLine(cloneName);
         }
 
         public static void DemoInterfaces()
