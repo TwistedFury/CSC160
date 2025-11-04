@@ -2,20 +2,27 @@
 
 namespace OverloadingOperators
 {
-    public struct Fraction(int whole = 0, int numerator = 0, int denominator = 1)
+    public struct Fraction
     {
-        public int WholeNumber { get; set; } = whole;
-        public int Numerator { get; set; } = numerator;
-        private int denominator = denominator;
+        public int WholeNumber { get; set; }
+        public int Numerator { get; set; }
+        private int denominator = 1;
 
         public int Denominator
         {
-            get { return denominator; }
+            readonly get { return denominator; }
             set
             {
-                if (value == 0) throw new ArgumentException("The denominator cannot be 0.");
+                if (value == 0) throw new ArgumentException("The denominator can never be 0.");
                 denominator = value;
             }
+        }
+
+        public Fraction(int whole = 0, int numerator = 0, int denominator = 1)
+        {
+            this.WholeNumber = whole;
+            this.Numerator = numerator;
+            this.Denominator = denominator;
         }
 
         public static int GCD(int m, int n)
@@ -32,19 +39,19 @@ namespace OverloadingOperators
 
         public void MakeProper()
         {
-            if (Numerator >= denominator)
+            if (Numerator >= Denominator)
             {
                 WholeNumber++;
-                Numerator -= denominator;
+                Numerator -= Denominator;
                 MakeProper();
             }
         }
 
         public void Reduce()
         {
-            int divisor = GCD(Numerator, denominator);
+            int divisor = GCD(Numerator, Denominator);
             Numerator /= divisor;
-            denominator /= divisor;
+            Denominator /= divisor;
         }
 
         public void Simplify()
@@ -81,7 +88,7 @@ namespace OverloadingOperators
             Fraction f3 = new();
             PrepareForOperation(ref f1, ref f2);
             f3.Numerator = f1.Numerator * f2.Numerator;
-            f3.denominator = f1.denominator * f2.denominator;
+            f3.Denominator = f1.Denominator * f2.Denominator;
             // Make f3 Proper and Reduced for output
             f3.Simplify();
             return f3;
@@ -93,7 +100,7 @@ namespace OverloadingOperators
             PrepareForOperation(ref f1, ref f2);
             f2.FlipFrac();
             f3.Numerator = f1.Numerator * f2.Numerator;
-            f3.denominator = f1.denominator * f2.denominator;
+            f3.Denominator = f1.Denominator * f2.Denominator;
             // Make f3 Proper and Reduced for output
             f3.Simplify();
             return f3;
@@ -131,17 +138,17 @@ namespace OverloadingOperators
         // Private Helper Methods (Lessen Repeating Code)
         private static void PrepareForOperation(ref Fraction f1, ref Fraction f2)
         {
-            if (f1.denominator != f2.denominator)
+            if (f1.Denominator != f2.Denominator)
             {
-                int denom = f1.denominator; // Storing
+                int denom = f1.Denominator; // Storing
 
                 // f1 modifications using f2
-                f1.Numerator *= f2.denominator;
-                f1.denominator *= f2.denominator;
+                f1.Numerator *= f2.Denominator;
+                f1.Denominator *= f2.Denominator;
 
                 // f2 modifications using the stored state of f1
                 f2.Numerator *= denom;
-                f2.denominator *= denom;
+                f2.Denominator *= denom;
             }
             // Make f1 & f2 Improper for operation
             f1.MakeImproper();
