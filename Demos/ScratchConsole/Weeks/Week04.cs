@@ -6,7 +6,7 @@ namespace ScratchConsole.Weeks
     {
         public static void Run()
         {
-            FullName name = new FullName(lastName: "Jacob Jingleheimer-Schmidt");
+            //FullName name = new FullName(lastName: "Jacob Jingleheimer-Schmidt");
         }
 
 

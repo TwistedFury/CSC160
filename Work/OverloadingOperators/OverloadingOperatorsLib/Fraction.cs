@@ -125,10 +125,7 @@ namespace OverloadingOperators
 
         public override string ToString()
         {
-            if (Numerator == 0) return $"{WholeNumber}";
-            else if (WholeNumber == 0) return $"{Numerator}/{denominator}";
-            
-            return $"{WholeNumber} {Numerator}/{denominator}";
+            return (Numerator == 0) ? $"{WholeNumber}" : (WholeNumber == 0) ? $"{Numerator}/{Denominator}" : $"{WholeNumber} {Numerator}/{Denominator}";
         }
         public override int GetHashCode()
         {
