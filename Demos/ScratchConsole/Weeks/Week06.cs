@@ -6,7 +6,22 @@ namespace ScratchConsole.Weeks
     {
         public static void Run()
         {
-            RunRace03();
+            DemoExtensionMethods();
+        }
+
+        public static void DemoExtensionMethods()
+        {
+            // Extension methods allow developers to add new methods to the public
+            // contract of an existing CLR type, without having to sub-class it or
+            // recompile the original type.
+
+            // Extension Methods help blend the flexibility of "duck typing" support
+            // popular within dynamic languages today with the performance and compile-time
+            // validation of strongly-typed languages.
+            // From https://stackoverflow.com/questions/403539/what-are-extension-methods
+
+            int max = 10;
+            int rand_num = max.GetRandom(1); // int rand_num = MyExtensions.GetRandom(max, 1);
         }
 
         /// <summary>

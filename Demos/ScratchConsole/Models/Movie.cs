@@ -11,7 +11,7 @@ namespace ScratchConsole.Models
     {
         // CREATE PROPERTIES
         // Full Property (propfull)
-        private string title;
+        private string title = "SHULL";
 
         public string Title
         {
